@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/widgets/left_drawer.dart';
 // TODO: Impor drawer yang sudah dibuat sebelumnya
 
 class ShopFormPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
-      // TODO: Tambahkan drawer yang sudah dibuat di sini
+      drawer: const LeftDrawer(),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -65,10 +66,10 @@ class _ShopFormPageState extends State<ShopFormPage> {
                 borderRadius: BorderRadius.circular(5.0),
               ),
             ),
-            // TODO: Tambahkan variabel yang sesuai
+
             onChanged: (String? value) {
               setState(() {
-                ... = int.parse(value!);
+                _price = int.parse(value!);
                 });
             },
             validator: (String? value) {
@@ -94,8 +95,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
             ),
             onChanged: (String? value) {
               setState(() {
-                // TODO: Tambahkan variabel yang sesuai
-                ... = value!;
+
+                _description = value!;
               });
             },
             validator: (String? value) {
@@ -116,32 +117,33 @@ class _ShopFormPageState extends State<ShopFormPage> {
                 MaterialStateProperty.all(Colors.indigo),
               ),
               onPressed: () {
-                if (_formKey.currentState!.validate()) {
-    showDialog(
-    context: context,
-    builder: (context) {
-    return AlertDialog(
-    title: const Text('Produk berhasil tersimpan'),
-    content: SingleChildScrollView(
-    child: Column(
-    crossAxisAlignment:
-    CrossAxisAlignment.start,
-    children: [
-    Text('Nama: $_name'),
-    // TODO: Munculkan value-value lainnya
-    ],
-    ),
-    ),
-    actions: [
-    TextButton(
-    child: const Text('OK'),
-    onPressed: () {
-    Navigator.pop(context);
-    },
-    ),
-    ],
-    );
-    _formKey.currentState!.reset();
+                if (_formKey.currentState!.validate()) {showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Produk berhasil tersimpan'),
+                      content: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment:
+                          CrossAxisAlignment.start,
+                          children: [
+                            Text('Nama: $_name'),
+                            // TODO: Munculkan value-value lainnya
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+                _formKey.currentState!.reset();
                 }
               },
               child: const Text(
