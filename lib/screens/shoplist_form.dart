@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/widgets/left_drawer.dart';
-// TODO: Impor drawer yang sudah dibuat sebelumnya
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -128,7 +127,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                           CrossAxisAlignment.start,
                           children: [
                             Text('Nama: $_name'),
-                            // TODO: Munculkan value-value lainnya
+                            Text('Price: $_price'),
+                            Text('Description: $_description'),
                           ],
                         ),
                       ),
