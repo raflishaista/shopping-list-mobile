@@ -128,7 +128,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                   final response = await request.postJson(
                       "http://localhost:8000/create-flutter/",
-                      jsonEncode(<String, String>{
+                      jsonEncode(<String, dynamic>{
                         'name': _name,
                         'price': _price.toString(),
                         'description': _description,
